@@ -1,10 +1,10 @@
 %define createdb ibus-table-createdb
 Summary:	Chinese input tables for IBus
-Name:		ibus-table-chinese
-Version:	1.3.1
-Release:	0.1
 Summary(zh_CN):	中文码表输入法
 Summary(zh_TW):	中文碼表輸入法
+Name:		ibus-table-chinese
+Version:	1.3.1
+Release:	1
 License:	GPL v3+
 Group:		Libraries
 Source0:	http://ibus.googlecode.com/files/%{name}-%{version}-Source.tar.gz
