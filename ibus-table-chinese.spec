@@ -3,13 +3,13 @@ Summary(pl.UTF-8):	Tablice wprowadzania znaków chińskich dla platformy IBus
 Summary(zh_CN.UTF-8):	中文码表输入法
 Summary(zh_TW.UTF-8):	中文碼表輸入法
 Name:		ibus-table-chinese
-Version:	1.4.0
+Version:	1.4.0.20121008
 Release:	1
 License:	GPL v3+
 Group:		Libraries
 #Source0Download: http://code.google.com/p/ibus/downloads/list
 Source0:	http://ibus.googlecode.com/files/%{name}-%{version}-Source.tar.gz
-# Source0-md5:	f65ce1bb41eb90e7ecc122b7d34df776
+# Source0-md5:	5c484d4a0a0dcfaf463949fc54e1cece
 Patch0:		%{name}-no-fedora.patch
 URL:		http://code.google.com/p/ibus/
 BuildRequires:	cmake >= 2.6.2
@@ -320,7 +320,7 @@ Metoda wprowadzania znaków chińskich YongMa.
 永碼輸入法。
 
 %prep
-%setup -q -n %{name}-%{version}-Source
+%setup -q -n %{name}-1.4.0-Source
 %patch0 -p1
 
 %build
