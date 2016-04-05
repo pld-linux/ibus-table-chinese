@@ -329,7 +329,7 @@ install -d tmp
 	-DCMAKE_FEDORA_ENABLE_FEDORA_BUILD=0 \
 	-DCMAKE_FEDORA_TMP_DIR=$(pwd)/tmp \
 	-DDATA_DIR=%{_datadir}
-%{__make}
+%{__make} -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
