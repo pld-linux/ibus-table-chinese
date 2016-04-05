@@ -3,16 +3,16 @@ Summary(pl.UTF-8):	Tablice wprowadzania znaków chińskich dla platformy IBus
 Summary(zh_CN.UTF-8):	中文码表输入法
 Summary(zh_TW.UTF-8):	中文碼表輸入法
 Name:		ibus-table-chinese
-Version:	1.4.6
+Version:	1.8.2
 Release:	1
 License:	GPL v3+
 Group:		Libraries
-#Source0Download: http://code.google.com/p/ibus/downloads/list
-Source0:	http://ibus.googlecode.com/files/%{name}-%{version}-Source.tar.gz
-# Source0-md5:	552dc3e28fbbf52435d3ce41fc09ac35
-Patch0:		%{name}-no-fedora.patch
-URL:		http://code.google.com/p/ibus/
+#Source0Download: https://github.com/definite/ibus-table-chinese/releases
+Source0:	https://github.com/definite/ibus-table-chinese/archive/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	6360649580363bb3627a11e32057f6b1
+URL:		https://github.com/definite/ibus-table-chinese
 BuildRequires:	cmake >= 2.6.2
+BuildRequires:	cmake-fedora-modules
 BuildRequires:	ibus-table-devel >= 1.2
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.603
@@ -320,11 +320,15 @@ Metoda wprowadzania znaków chińskich YongMa.
 永碼輸入法。
 
 %prep
-%setup -q -n %{name}-%{version}-Source
-%patch0 -p1
+%setup -q
+
+install -d tmp
 
 %build
-%cmake
+%cmake \
+	-DCMAKE_FEDORA_ENABLE_FEDORA_BUILD=0 \
+	-DCMAKE_FEDORA_TMP_DIR=$(pwd)/tmp \
+	-DDATA_DIR=%{_datadir}
 %{__make}
 
 %install
