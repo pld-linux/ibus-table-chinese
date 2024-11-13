@@ -3,20 +3,19 @@ Summary(pl.UTF-8):	Tablice wprowadzania znaków chińskich dla platformy IBus
 Summary(zh_CN.UTF-8):	中文码表输入法
 Summary(zh_TW.UTF-8):	中文碼表輸入法
 Name:		ibus-table-chinese
-Version:	1.8.2
+Version:	1.8.3
 Release:	1
 License:	GPL v3+
 Group:		Libraries
-#Source0Download: https://github.com/definite/ibus-table-chinese/releases
+#Source0Download: https://github.com/definite/ibus-table-chinese/tags
 Source0:	https://github.com/definite/ibus-table-chinese/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	6360649580363bb3627a11e32057f6b1
+# Source0-md5:	d5bb313b7d854f8f587005436daab625
 URL:		https://github.com/definite/ibus-table-chinese
 BuildRequires:	cmake >= 2.6.2
 BuildRequires:	cmake-fedora-modules
-BuildRequires:	ibus-table-devel >= 1.2
+BuildRequires:	ibus-table-devel >= 1.5.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.603
-Requires:	ibus-table >= 1.2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -39,6 +38,7 @@ Summary(zh_CN.UTF-8):	行列输入法
 Summary(zh_TW.UTF-8):	行列輸入法
 License:	Freely redistributable without restriction
 Group:		Libraries
+Requires:	ibus-table >= 1.5.0
 
 %description array
 Array input method is a free, open-minded character-structured input
@@ -68,6 +68,7 @@ Summary(zh_TW.UTF-8):	倉頡輸入法
 Summary(zh_CN.UTF-8):	仓颉输入法
 License:	Freely redistributable without restriction
 Group:		Libraries
+Requires:	ibus-table >= 1.5.0
 
 %description cangjie
 Cangjie based input methods, includes: Cangjie3, Cangjie5, and Cangjie
@@ -86,6 +87,7 @@ Summary:	Cantonese input methods
 Summary(pl.UTF-8):	Kantońskie metody wprowadzania znaków chińskich
 Summary(zh_TW.UTF-8):	粵語輸入法
 Group:		Libraries
+Requires:	ibus-table >= 1.5.0
 
 %description cantonese
 Cantonese input methods, includes: Cantonese, Hong-Kong version of
@@ -106,6 +108,7 @@ Summary(pl.UTF-8):	Łatwa (easy) metoda wprowadzania znaków chińskich
 Summary(zh_CN.UTF-8):	轻松输入法
 Summary(zh_TW.UTF-8):	輕鬆輸入法
 Group:		Libraries
+Requires:	ibus-table >= 1.5.0
 
 %description easy
 Easy phrase-wise input method.
@@ -126,6 +129,7 @@ Summary(zh_CN.UTF-8):	二笔输入法
 Summary(zh_TW.UTF-8):	二筆輸入法
 License:	Freely redistributable without restriction
 Group:		Libraries
+Requires:	ibus-table >= 1.5.0
 
 %description erbi
 Erbi input methods. Includes: Super Erbi (as erbi) and Erbi Qin-Song
@@ -152,6 +156,7 @@ Summary(zh_CN.UTF-8):	速成输入法
 Summary(zh_TW.UTF-8):	速成輸入法
 License:	Freely redistributable without restriction
 Group:		Libraries
+Requires:	ibus-table >= 1.5.0
 
 %description quick
 Quick-to-learn is based on Cangjie input method, but only need
@@ -179,6 +184,7 @@ Summary(pl.UTF-8):	Metoda wprowadzania znaków chińskich Cangjie
 Summary(zh_CN.UTF-8):	快速仓颉输入法
 Summary(zh_TW.UTF-8):	快速倉頡輸入法
 Group:		Libraries
+Requires:	ibus-table >= 1.5.0
 
 %description scj
 Smart Cangjie is an improved Cangjie base input method which handles
@@ -221,6 +227,7 @@ Summary(pl.UTF-8):	Metoda wprowadzania znaków chińskich Stroke 5
 Summary(zh_CN.UTF-8):	笔顺五码输入法
 Summary(zh_TW.UTF-8):	筆順五碼輸入法
 Group:		Libraries
+Requires:	ibus-table >= 1.5.0
 
 %description stroke5
 Stroke 5 input method.
@@ -240,6 +247,7 @@ Summary(pl.UTF-8):	Metoda wprowadzania zapisu wymowy chińskiej Wu
 Summary(zh_CN.UTF-8):	上海吳语注音输入法
 Summary(zh_TW.UTF-8):	上海吳語注音輸入法
 Group:		Libraries
+Requires:	ibus-table >= 1.5.0
 
 %description wu
 Wu pronunciation input method. URL: <http://input.foruto.com/wu/>.
@@ -265,6 +273,7 @@ Summary(zh_CN.UTF-8):	海峰五笔输入法
 Summary(zh_TW.UTF-8):	海峰五筆輸入法
 License:	BSD
 Group:		Libraries
+Requires:	ibus-table >= 1.5.0
 
 %description wubi-haifeng
 Haifeng Wubi input methods. Current includes: Haifeng Wubi 86.
@@ -286,6 +295,7 @@ Summary(zh_CN.UTF-8):	极点五笔输入法
 Summary(zh_TW.UTF-8):	極點五筆輸入法
 License:	Freely redistributable without restriction
 Group:		Libraries
+Requires:	ibus-table >= 1.5.0
 
 %description wubi-jidian
 Jidian Wubi input methods. Current includes: Wubi 86.
@@ -306,6 +316,7 @@ Summary(pl.UTF-8):	Metoda wprowadzania znaków chińskich YongMa
 Summary(zh_CN.UTF-8):	永码输入法
 Summary(zh_TW.UTF-8):	永碼輸入法
 Group:		Libraries
+Requires:	ibus-table >= 1.5.0
 
 %description yong
 YongMa input method.
@@ -325,10 +336,12 @@ Metoda wprowadzania znaków chińskich YongMa.
 install -d tmp
 
 %build
+# only in-tree build is supported (as of 1.8.3)
 %cmake \
 	-DCMAKE_FEDORA_ENABLE_FEDORA_BUILD=0 \
 	-DCMAKE_FEDORA_TMP_DIR=$(pwd)/tmp \
 	-DDATA_DIR=%{_datadir}
+
 %{__make} -j1
 
 %install
@@ -351,77 +364,79 @@ rm -rf $RPM_BUILD_ROOT
 
 %files array
 %defattr(644,root,root,755)
-%{_datadir}/ibus-table/icons/array30.*
+%{_datadir}/ibus-table/icons/array30.png
 %{_datadir}/ibus-table/tables/array30.db
-%{_datadir}/ibus-table/icons/array30-big.*
+%{_datadir}/ibus-table/icons/array30-big.png
 %{_datadir}/ibus-table/tables/array30-big.db
 
 %files cangjie
 %defattr(644,root,root,755)
-%{_datadir}/ibus-table/icons/cangjie3.*
+%{_datadir}/ibus-table/icons/cangjie3.svg
 %{_datadir}/ibus-table/tables/cangjie3.db
-%{_datadir}/ibus-table/icons/cangjie5.*
+%{_datadir}/ibus-table/icons/cangjie5.svg
 %{_datadir}/ibus-table/tables/cangjie5.db
-%{_datadir}/ibus-table/icons/cangjie-big.*
+%{_datadir}/ibus-table/icons/cangjie-big.png
 %{_datadir}/ibus-table/tables/cangjie-big.db
 
 %files cantonese
 %defattr(644,root,root,755)
-%{_datadir}/ibus-table/icons/cantonese.*
+%{_datadir}/ibus-table/icons/cantonese.png
 %{_datadir}/ibus-table/tables/cantonese.db
-%{_datadir}/ibus-table/icons/cantonhk.*
+%{_datadir}/ibus-table/icons/cantonyale.png
+%{_datadir}/ibus-table/tables/cantonyale.db
+%{_datadir}/ibus-table/icons/cantonhk.png
 %{_datadir}/ibus-table/tables/cantonhk.db
-%{_datadir}/ibus-table/icons/jyutping.*
+%{_datadir}/ibus-table/icons/jyutping.png
 %{_datadir}/ibus-table/tables/jyutping.db
 
 %files easy
 %defattr(644,root,root,755)
-%{_datadir}/ibus-table/icons/easy-big.*
+%{_datadir}/ibus-table/icons/easy-big.png
 %{_datadir}/ibus-table/tables/easy-big.db
 
 %files erbi
 %defattr(644,root,root,755)
-%{_datadir}/ibus-table/icons/erbi.*
+%{_datadir}/ibus-table/icons/erbi.png
 %{_datadir}/ibus-table/tables/erbi.db
-%{_datadir}/ibus-table/icons/erbi-qs.*
+%{_datadir}/ibus-table/icons/erbi-qs.svg
 %{_datadir}/ibus-table/tables/erbi-qs.db
 
 %files quick
 %defattr(644,root,root,755)
-%{_datadir}/ibus-table/icons/quick3.*
+%{_datadir}/ibus-table/icons/quick3.png
 %{_datadir}/ibus-table/tables/quick3.db
-%{_datadir}/ibus-table/icons/quick5.*
+%{_datadir}/ibus-table/icons/quick5.png
 %{_datadir}/ibus-table/tables/quick5.db
-%{_datadir}/ibus-table/icons/quick-classic.*
+%{_datadir}/ibus-table/icons/quick-classic.png
 %{_datadir}/ibus-table/tables/quick-classic.db
 
 %files scj
 %defattr(644,root,root,755)
-%{_datadir}/ibus-table/icons/scj6.*
+%{_datadir}/ibus-table/icons/scj6.svg
 %{_datadir}/ibus-table/tables/scj6.db
 
 %files stroke5
 %defattr(644,root,root,755)
-%{_datadir}/ibus-table/icons/stroke5.*
+%{_datadir}/ibus-table/icons/stroke5.png
 %{_datadir}/ibus-table/tables/stroke5.db
 
 %files wu
 %defattr(644,root,root,755)
-%{_datadir}/ibus-table/icons/wu.*
+%{_datadir}/ibus-table/icons/wu.png
 %{_datadir}/ibus-table/tables/wu.db
 
 %files wubi-haifeng
 %defattr(644,root,root,755)
 %doc tables/wubi-haifeng/COPYING tables/wubi-haifeng/README
-%{_datadir}/ibus-table/icons/wubi-haifeng86.*
+%{_datadir}/ibus-table/icons/wubi-haifeng86.svg
 %{_datadir}/ibus-table/tables/wubi-haifeng86.db
 
 %files wubi-jidian
 %defattr(644,root,root,755)
-%{_datadir}/ibus-table/icons/wubi-jidian86.*
+%{_datadir}/ibus-table/icons/wubi-jidian86.svg
 %{_datadir}/ibus-table/tables/wubi-jidian86.db
 
 %files yong
 %defattr(644,root,root,755)
-%{_datadir}/ibus-table/icons/yong.*
+%{_datadir}/ibus-table/icons/yong.png
 %{_datadir}/ibus-table/tables/yong.db
